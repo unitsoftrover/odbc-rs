@@ -708,12 +708,8 @@ unsafe impl<'a, T> OdbcType<'a> for Option<T> where T: OdbcType<'a> {
     }
 }
 
-
 mod test {
     // use environment::create_environment_v3_with_os_db_encoding;
-    use super::*;
-    use std::collections::HashSet;
-    use std::borrow::Cow;
 
     #[test]
     fn encoded_value_test() {
@@ -721,7 +717,6 @@ mod test {
         let mut encoded_values = Vec::new();
 
         // let _ = create_environment_v3_with_os_db_encoding("utf8", "sjis");
-
         //string test
         for i in 0..10 {
             for h in 0..10 {

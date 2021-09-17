@@ -93,7 +93,7 @@ impl<D> GetDiagRec for D
 where
     D: safe::Diagnostics,
 {
-    fn get_diag_rec(&self, record_number: i16) -> Option<(DiagnosticRecord)> {
+    fn get_diag_rec(&self, record_number: i16) -> Option<DiagnosticRecord> {
         use safe::ReturnOption::*;
         let mut message = [0; MAX_DIAGNOSTIC_MESSAGE_SIZE];
         match self.diagnostics(record_number, &mut message) {

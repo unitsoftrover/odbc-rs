@@ -45,7 +45,7 @@ impl Environment<Version3> {
 }
 
 impl <'env> Connection<'env, AutocommitOn> {
-    pub fn disable_autocommit(mut self) -> std::result::Result<Connection<'env, AutocommitOff>, Self> {
+    pub fn disable_autocommit(self) -> std::result::Result<Connection<'env, AutocommitOff>, Self> {
         let ret = self.safe.disable_autocommit();
         match ret {
             safe::Return::Success(value) => Ok(Connection { safe: value }),
@@ -56,7 +56,7 @@ impl <'env> Connection<'env, AutocommitOn> {
 }
 
 impl <'env> Connection<'env, AutocommitOff> {
-    pub fn enable_autocommit(mut self) -> std::result::Result<Connection<'env, AutocommitOn>, Self> {
+    pub fn enable_autocommit(self) -> std::result::Result<Connection<'env, AutocommitOn>, Self> {
         let ret = self.safe.enable_autocommit();
         match ret {
             safe::Return::Success(value) => Ok(Connection { safe: value }),
