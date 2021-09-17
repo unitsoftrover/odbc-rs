@@ -86,7 +86,6 @@ impl<'a, 'b, AC: AutocommitMode> Statement<'a, 'b, Prepared, NoResult, AC> {
     pub fn affected_row_count(&self) -> Result<ffi::SQLLEN> {
         self.raii.affected_row_count().into_result(self)
     }
-
     /// Executes a prepared statement.
     pub fn execute(mut self) -> Result<ResultSetState<'a, 'b, Prepared, AC>> {
         if self.raii.execute().into_result(&mut self)? {
